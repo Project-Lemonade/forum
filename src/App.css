@@ -1,0 +1,40 @@
+html {
+  --ff-primary: sans-serif;
+  --ff-secondary: ;
+
+  --clr-orange: #ffaa00;
+
+  --fs-text: 1.25rem;
+
+  height: 100%;
+
+  overflow-x: hidden;
+
+  overscroll-behavior: none;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+  font-family: var(--ff-primary);
+  font-size: var(--fs-text);
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1 0 auto;
+}
+
+a {
+  color: var(--clr-orange);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
