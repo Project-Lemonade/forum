@@ -1,15 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,600;1,800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200&family=Open+Sans:wght@300&display=swap");
+
 html {
-  --ff-primary: sans-serif;
-  --ff-secondary: ;
+  --ff-primary: "Poppins", sans-serif;
+  --ff-secondary: "Josefin Sans", sans-serif;
 
+  --fs-h1: 3rem;
+  --fs-h2: 2.15rem;
+  --fs-h3: 1.8rem;
+  --fs-h4: 1.35rem;
+  --fs-body: 1.1rem;
+
+  --clr-black: #010102;
+  --clr-dark: #111111;
+  --clr-light: #f6f6f6;
+  --clr-light-grey: #cdcdcd;
+  --clr-grey: #666666;
   --clr-orange: #ffaa00;
-
-  --fs-text: 1.25rem;
+  --clr-dark-orange: #ff9900;
+  --clr-pink: #ff797d;
 
   height: 100%;
 
-  overflow-x: hidden;
+  scroll-behavior: smooth;
 
+  overflow-x: hidden;
   overscroll-behavior: none;
 }
 
@@ -17,7 +32,7 @@ body {
   margin: 0;
   height: 100%;
   font-family: var(--ff-primary);
-  font-size: var(--fs-text);
+  font-size: var(--fs-body);
 }
 
 .App {
@@ -31,10 +46,80 @@ body {
 }
 
 a {
+  cursor: pointer;
   color: var(--clr-orange);
   text-decoration: none;
 }
 
-a:hover {
+.underline:hover {
   text-decoration: underline;
+}
+
+@media (min-width: 800px) {
+  html {
+    --fs-h1: 4.5rem;
+    --fs-h2: 3.25rem;
+    --fs-h3: 2rem;
+    --fs-h4: 1.5rem;
+    --fs-body: 1.25rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  html {
+    --fs-h1: 5.2rem;
+    --fs-h2: 3.65rem;
+    --fs-h3: 2.25rem;
+    --fs-h4: 1.8rem;
+    --fs-body: 1.4rem;
+  }
+}
+
+@media (min-width: 1500px) {
+  html {
+    --fs-h1: 5.5rem;
+    --fs-h2: 3.8rem;
+    --fs-h3: 2.5rem;
+    --fs-h4: 2.15rem;
+    --fs-body: 1.5rem;
+  }
+}
+
+@media (min-width: 1750px) {
+  html {
+    --fs-h1: 5.75rem;
+    --fs-h2: 4rem;
+    --fs-h3: 2.75rem;
+    --fs-h4: 2.3rem;
+    --fs-body: 1.5rem;
+  }
+}
+
+@media (min-width: 2000px) {
+  html {
+    --fs-h1: 6.1rem;
+    --fs-h2: 4.1rem;
+    --fs-h3: 3rem;
+    --fs-h4: 2.5rem;
+    --fs-body: 1.5rem;
+  }
+}
+
+.gradient-text {
+  background: linear-gradient(120deg, var(--clr-dark-orange), var(--clr-pink));
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-bg 1s ease alternate-reverse infinite;
+}
+
+@keyframes gradient-bg {
+  from {
+    background-position: top left;
+  }
+
+  to {
+    background-position: bottom right;
+  }
 }

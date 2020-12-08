@@ -2,14 +2,27 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-weight: 300;
   padding: 1rem;
   box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
 }
 
 .header .logo {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: var(--clr-orange);
+}
+
+.header .logo img {
   width: 50px;
-  display: grid;
-  place-items: center;
+}
+
+.header .logo h2 {
+  font-weight: 300;
+  margin: 0;
+  padding: 0 1rem;
+  display: none;
 }
 
 .profile {
@@ -20,9 +33,21 @@
 
 .profile a {
   padding: 0 0.75rem;
+  font-size: 1.3rem;
 }
 
 .profile img {
   max-width: 50px;
   border-radius: 50%;
+  padding: 0 0.5rem 0 1rem;
+}
+
+@media (min-width: 550px) {
+  .header .logo h2 {
+    display: initial;
+  }
+}
+
+.log-in a {
+  padding: 0 0.75rem;
 }
