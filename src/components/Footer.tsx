@@ -1,6 +1,6 @@
 import React from "react";
-import "./footer.css";
-import image from "./lemonglass.png";
+
+//! In production, change the links to the official site's.
 
 export default class Footer extends React.PureComponent {
   render() {
@@ -24,7 +24,11 @@ export default class Footer extends React.PureComponent {
               <hr className="footer-hr" />
               <div className="footer-top">
                 <div className="footer-logo">
-                  <img className="footer-img" src={image} alt="logo" />
+                  <img
+                    className="footer-img"
+                    src="./images/lemonglass.png"
+                    alt="logo"
+                  />
                 </div>
                 <div className="footer-about">
                   Project Lemonade is currently a project in development, we are

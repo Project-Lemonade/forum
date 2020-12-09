@@ -1,8 +1,12 @@
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-weight: 300;
+  width: calc(100% - 2rem);
   padding: 1rem;
   box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
 }
@@ -19,6 +23,7 @@
 }
 
 .header .logo h2 {
+  font-size: 2rem;
   font-weight: 300;
   margin: 0;
   padding: 0 1rem;
@@ -31,9 +36,10 @@
   justify-content: space-between;
 }
 
-.profile a {
-  padding: 0 0.75rem;
-  font-size: 1.3rem;
+.profile a,
+.log-in a {
+  margin: 0 0.75rem;
+  font-size: 1.5rem;
 }
 
 .profile img {
@@ -46,8 +52,4 @@
   .header .logo h2 {
     display: initial;
   }
-}
-
-.log-in a {
-  padding: 0 0.75rem;
 }

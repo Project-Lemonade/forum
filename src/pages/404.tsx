@@ -1,9 +1,9 @@
-import * as React from "react";
-import "./notfound.css";
+import React from "react";
+import Layout from "../components/Layout";
 
-export class NotFound extends React.PureComponent {
-  render() {
-    return (
+export default function NotFound() {
+  return (
+    <Layout>
       <div className="not-found">
         <div>
           <h1>404</h1>
@@ -14,6 +14,6 @@ export class NotFound extends React.PureComponent {
           </p>
         </div>
       </div>
-    );
-  }
+    </Layout>
+  );
 }
