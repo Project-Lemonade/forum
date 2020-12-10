@@ -1,7 +1,22 @@
 import passport from "passport";
 import passportDiscord from "passport-discord";
+import { Users } from "../database/database";
 
 const DiscordStrategy = passportDiscord.Strategy;
+
+passport.serializeUser<any, string>((user, done) => {
+  done(undefined, user.id);
+});
+
+passport.deserializeUser<any, string>(async (id, done) => {
+  const user = await Users.findOne({
+    where: {
+      id: id,
+    },
+  });
+
+  if (user) done(undefined, user);
+});
 
 passport.use(
   new DiscordStrategy(
@@ -11,8 +26,29 @@ passport.use(
       callbackURL: process.env.CLIENT_REDIRECT,
       scope: ["identify"],
     },
-    (accessToken, refreshToken, profile, done) => {
-      console.log(profile);
+    async (accessToken, refreshToken, profile, done) => {
+      try {
+        const user = await Users.findOne({
+          where: {
+            id: profile.id,
+          },
+        });
+
+        if (user) {
+          done(undefined, user);
+        } else {
+          const newUser = await Users.create({
+            id: profile.id,
+            avatar: profile.avatar,
+            username: profile.username,
+          });
+
+          done(undefined, newUser);
+        }
+      } catch (error) {
+        console.error(error);
+        done(error, undefined);
+      }
     }
   )
 );

@@ -8,8 +8,6 @@ type LayoutProps = {
 };
 
 export default function Layout(props: LayoutProps) {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
   return (
     <div>
       <Head>
@@ -20,15 +18,12 @@ export default function Layout(props: LayoutProps) {
           name="description"
           content="The official Project Lemonade forums. Join the dicussion today!"
         />
+        <meta property="og:image" content="/images/cover.png" />
         <meta
-          name="og:image"
-          content="https://og-image.now.sh/**Project**%20Lemonade.png?theme=light&md=1&fontSize=100px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg&widths=auto&heights=350"
-        />
-        <meta
-          name="og:description"
+          property="og:description"
           content="The official Project Lemonade forums. Join the dicussion today!"
         />
-        <meta name="og:title" content="Project Lemonade Forums" />
+        <meta property="og:title" content="Project Lemonade Forums" />
         <title>Forums</title>
         <link rel="shortcut icon" href="/images/icon.svg" type="image/x-icon" />
         <script
@@ -38,7 +33,7 @@ export default function Layout(props: LayoutProps) {
         ></script>
       </Head>
       <div className="App">
-        <Header isLoggedIn={isLoggedIn} />
+        <Header />
         <div className="content">{props.children}</div>
         <Footer />
       </div>

@@ -1,7 +1,7 @@
 .question {
   display: flex;
   flex-direction: column;
-  max-width: 92.5%;
+  max-width: 95%;
   margin: 0 auto;
   padding: 2rem 0;
 }
@@ -14,6 +14,7 @@
 }
 
 .question hr {
+  width: 100%;
   border: 1px solid var(--clr-orange);
 }
 
@@ -59,13 +60,18 @@
   font-size: 1.1rem;
   width: 150px;
   color: var(--clr-light);
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   padding: 0.75rem;
   background: linear-gradient(140deg, var(--clr-orange), var(--clr-pink));
   background-size: 200% 100%;
   animation: gradient-bg 1s ease alternate-reverse infinite;
   border: none;
   border-radius: 0.25rem;
+  transition: 0.2s transform ease;
+}
+
+.question-submit:hover {
+  transform: scale(1.01);
 }
 
 .question-footer {

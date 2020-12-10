@@ -3,6 +3,7 @@ import express from "express";
 import session from "express-session";
 import next from "next";
 import passport from "passport";
+import { Questions } from "./database/database";
 import { router as auth } from "./routes/auth";
 
 dotenv();
@@ -24,9 +25,13 @@ export const dev = process.env.NODE_ENV !== "production";
 
     server.use(
       session({
+        name: "plf.qid",
         secret: "some random secret",
         cookie: {
           maxAge: 1000 * 60 * 60 * 24,
+          httpOnly: true,
+          sameSite: "lax",
+          secure: !dev,
         },
         saveUninitialized: false,
         resave: false,
@@ -36,6 +41,13 @@ export const dev = process.env.NODE_ENV !== "production";
     server.use(passport.initialize());
     server.use(passport.session());
 
+    server.use(express.json());
+    server.use(
+      express.urlencoded({
+        extended: true,
+      })
+    );
+
     server.use("/auth", auth);
 
     server.get("/questions", async (req, res) => {
@@ -44,6 +56,25 @@ export const dev = process.env.NODE_ENV !== "production";
 
     server.get("/questions/:questionId/*", async (req, res) => {
       return res.redirect(`/questions/${req.params.questionId}`);
+    });
+
+    server.get("/questions/:questionId", async (req, res) => {
+      if (
+        !(await Questions.findOne({
+          where: {
+            id: req.params.questionId,
+          },
+          attributes: ["id"],
+        }))
+      )
+        return res.redirect("/");
+
+      return handle(req, res);
+    });
+
+    server.get("/ask", async (req, res) => {
+      if (!req.user) return res.redirect("/");
+      return handle(req, res);
     });
 
     server.get("*", async (req, res) => {

@@ -13,7 +13,7 @@ export default function init(
       type: dataTypes.STRING,
       allowNull: false,
     },
-    pfp: {
+    avatar: {
       type: dataTypes.STRING,
       allowNull: false,
     },
