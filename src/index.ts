@@ -7,11 +7,12 @@ import { router as auth } from "./routes/auth";
 
 dotenv();
 
+export const dev = process.env.NODE_ENV !== "production";
+
 (async () => {
   try {
     await import("./strategies/discord");
 
-    const dev = process.env.NODE_ENV !== "production";
     const app = next({ dev });
     const handle = app.getRequestHandler();
 
@@ -37,7 +38,15 @@ dotenv();
 
     server.use("/auth", auth);
 
-    server.get("*", (req, res) => {
+    server.get("/questions", async (req, res) => {
+      return res.redirect("/");
+    });
+
+    server.get("/questions/:questionId/*", async (req, res) => {
+      return res.redirect(`/questions/${req.params.questionId}`);
+    });
+
+    server.get("*", async (req, res) => {
       return handle(req, res);
     });
 

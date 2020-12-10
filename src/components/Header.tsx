@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 interface IHeaderProps {
@@ -8,12 +9,12 @@ class Header extends React.Component<IHeaderProps> {
   render() {
     return (
       <header className="header">
-        <a href="/">
+        <Link href="/">
           <div className="logo">
-            <img src="./images/icon.svg" alt="logo" />
+            <img src="/images/icon.svg" alt="logo" />
             <h2>Forums</h2>
           </div>
-        </a>
+        </Link>
         <div className="info">
           {this.props.isLoggedIn ? (
             <div className="profile">
@@ -23,10 +24,8 @@ class Header extends React.Component<IHeaderProps> {
               <img src="" alt="user avatar" className="pfp" />
             </div>
           ) : (
-            <div className="log-in">
-              <a href="/auth" className="underline">
-                Log in
-              </a>
+            <div className="log-in underline">
+              <Link href="/auth">Log in</Link>
             </div>
           )}
         </div>

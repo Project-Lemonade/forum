@@ -26,7 +26,7 @@ export default class Footer extends React.PureComponent {
                 <div className="footer-logo">
                   <img
                     className="footer-img"
-                    src="./images/lemonglass.png"
+                    src="/images/lemonglass.png"
                     alt="logo"
                   />
                 </div>

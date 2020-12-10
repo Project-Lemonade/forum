@@ -30,11 +30,7 @@ export default function Layout(props: LayoutProps) {
         />
         <meta name="og:title" content="Project Lemonade Forums" />
         <title>Forums</title>
-        <link
-          rel="shortcut icon"
-          href="./images/icon.svg"
-          type="image/x-icon"
-        />
+        <link rel="shortcut icon" href="/images/icon.svg" type="image/x-icon" />
         <script
           src="https://kit.fontawesome.com/563a19917f.js"
           crossOrigin="anonymous"

@@ -88,3 +88,31 @@ Server listening on port 3000!
 - This application uses [Server Side Rendering](https://www.youtube.com/watch?v=GQzn7XRdzxY).
 
 ### :warning: You must start the server just like this otherwise it will fail.
+
+### Initializing and reinitializing the database
+
+#### :warning: You shouldn't do anything listed here unless it is initialization.
+
+If you haven't already, open the terminal and navigate to the `src` folder:
+
+```bash
+$ cd src
+```
+
+Then initiate the database with:
+
+```bash
+$ npm run dbinit
+```
+
+or with yarn:
+
+```bash
+$ yarn dbinit
+```
+
+You should see a message like this:
+
+```bash
+Database synced
+```

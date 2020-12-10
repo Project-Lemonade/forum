@@ -1,9 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,600;1,800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200&family=Open+Sans:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&display=swap");
 
 html {
   --ff-primary: "Poppins", sans-serif;
   --ff-secondary: "Josefin Sans", sans-serif;
+  --ff-mono: "Fira Code", monospace;
 
   --fs-h1: 3rem;
   --fs-h2: 2.15rem;
@@ -13,9 +15,9 @@ html {
 
   --clr-black: #010102;
   --clr-dark: #111111;
-  --clr-light: #f6f6f6;
-  --clr-light-grey: #cdcdcd;
-  --clr-grey: #666666;
+  --clr-light: #fafafa;
+  --clr-light-grey: #aaaaaa;
+  --clr-grey: #555555;
   --clr-orange: #ffaa00;
   --clr-dark-orange: #ff9900;
   --clr-pink: #ff797d;
@@ -33,6 +35,7 @@ body {
   height: 100%;
   font-family: var(--ff-primary);
   font-size: var(--fs-body);
+  background-color: var(--clr-light);
 }
 
 .App {

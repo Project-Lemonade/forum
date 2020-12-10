@@ -5,9 +5,12 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.ts",
+    "dbinit": "ts-node database/init.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "im-lonely <cursors.dev@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {}
 }

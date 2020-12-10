@@ -1,7 +1,10 @@
 import { DataTypes, Sequelize } from "sequelize";
 
-export default (sequelize: Sequelize, dataTypes: typeof DataTypes) =>
-  sequelize.define("questions", {
+export default function init(
+  sequelize: Sequelize,
+  dataTypes: typeof DataTypes
+) {
+  return sequelize.define("questions", {
     id: {
       type: dataTypes.INTEGER,
       autoIncrement: true,
@@ -19,8 +22,5 @@ export default (sequelize: Sequelize, dataTypes: typeof DataTypes) =>
       type: dataTypes.TEXT,
       allowNull: false,
     },
-    answers: {
-      type: dataTypes.STRING,
-      defaultValue: "",
-    },
   });
+}

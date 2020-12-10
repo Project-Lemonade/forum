@@ -44,7 +44,7 @@
   .not-found div {
     display: flex;
     justify-content: space-between;
-    width: 400px;
+    width: 450px;
     padding-right: 0;
   }
 
@@ -63,7 +63,7 @@
   }
 
   .not-found div {
-    width: 450px;
+    width: 525px;
   }
 
   .not-found h1 {
@@ -81,6 +81,6 @@
   }
 
   .not-found div {
-    width: 500px;
+    width: 550px;
   }
 }

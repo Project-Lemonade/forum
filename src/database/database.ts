@@ -1,4 +1,7 @@
 import { DataTypes, Sequelize } from "sequelize";
+import { default as answers } from "./models/Answers";
+import { default as questions } from "./models/Questions";
+import { default as users } from "./models/Users";
 
 const sequelize = new Sequelize("database", "username", "password", {
   host: "localhost",
@@ -7,33 +10,25 @@ const sequelize = new Sequelize("database", "username", "password", {
   storage: "database.sqlite",
 });
 
-export default await (async () => {
-  const Questions = (await import("./models/Questions")).default(
-    sequelize,
-    DataTypes
-  );
+const Questions = questions(sequelize, DataTypes);
 
-  const Answers = (await import("./models/Answers")).default(
-    sequelize,
-    DataTypes
-  );
+const Answers = answers(sequelize, DataTypes);
 
-  const Users = (await import("./models/Users")).default(sequelize, DataTypes);
+const Users = users(sequelize, DataTypes);
 
-  Users.hasMany(Questions, {
-    as: "userQuestions",
-  });
-  Questions.belongsTo(Users);
+Users.hasMany(Questions, {
+  foreignKey: "authorId",
+});
+Questions.belongsTo(Users);
 
-  Users.hasMany(Answers, {
-    as: "userAnswers",
-  });
-  Answers.belongsTo(Users);
+Users.hasMany(Answers, {
+  foreignKey: "authorId",
+});
+Answers.belongsTo(Users);
 
-  Questions.hasMany(Answers, {
-    as: "questionAnswers",
-  });
-  Answers.belongsTo(Questions);
+Questions.hasMany(Answers, {
+  foreignKey: "questionId",
+});
+Answers.belongsTo(Questions);
 
-  return { Users, Questions, Answers };
-})();
+export { Users, Questions, Answers };

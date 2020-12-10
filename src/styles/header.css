@@ -8,6 +8,7 @@
   font-weight: 300;
   width: calc(100% - 2rem);
   padding: 1rem;
+  background-color: var(--clr-light);
   box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
 }
 

@@ -1,0 +1,43 @@
+.answer {
+  border-bottom: 1px solid var(--clr-grey);
+}
+
+.answer:last-child {
+  border-bottom: none;
+}
+
+.answer-info {
+  display: flex;
+  flex-direction: column;
+  height: 125px;
+}
+
+.answer-timestamps {
+  display: flex;
+  justify-content: space-between;
+  width: 325px;
+}
+
+.answer-timestamps p {
+  font-size: 0.95rem;
+  margin: 0.25rem;
+  color: var(--clr-grey);
+}
+
+.answer-author {
+  display: flex;
+  align-items: center;
+  align-self: flex-end;
+  margin-top: auto;
+}
+
+.answer-username {
+  font-size: 1.25rem;
+  margin: 0.25rem;
+}
+
+.answer-pfp {
+  width: 3.5rem;
+  height: 3.5rem;
+  margin-left: 0.5rem;
+}
