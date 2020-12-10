@@ -8,12 +8,15 @@
 
 ### To-do List
 
-- [ ] Database
+- [ ] Welcome page
+- [ ] Ask page
+- [ ] Post answer
 - [ ] Auth redirect
-- [ ] Sessions
-- [ ] Log out
-- [ ] Serialization
-- [ ] Deserialization
+- [ ] Session stores
+- [x] Log out
+- [x] Serialization
+- [x] Deserialization
+- [x] Database
 - [x] Header
 - [x] Footer
 - [x] 404 Page
