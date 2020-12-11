@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/answer.css";
+import "../styles/ask.css";
 import "../styles/footer.css";
 import "../styles/header.css";
 import "../styles/notfound.css";

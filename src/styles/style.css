@@ -74,6 +74,17 @@ i {
   text-decoration: underline;
 }
 
+textarea {
+  resize: none;
+}
+
+.error {
+  color: #ff1563;
+  font-size: 1.25rem;
+  min-height: 2rem;
+  padding: 0.5rem 0;
+}
+
 @media (min-width: 800px) {
   html {
     --fs-h1: 4.5rem;

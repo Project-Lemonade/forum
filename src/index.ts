@@ -74,7 +74,7 @@ export const dev = process.env.NODE_ENV !== "production";
     });
 
     server.get("/ask", async (req, res) => {
-      if (!req.user) return res.redirect("/");
+      // if (!req.user) return res.redirect("/");
       return handle(req, res);
     });
 

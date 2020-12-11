@@ -77,11 +77,12 @@ div.splash div .show {
   flex-direction: column;
   max-width: 90%;
   margin: 0 auto;
-  padding: 1rem 0;
+  padding: 1rem 0 0;
 }
 
 .start-now img {
   align-self: center;
+  max-width: 100%;
   margin: 1rem 0;
   padding: 0.5rem;
   border: 1px solid var(--clr-dark);
