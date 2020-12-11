@@ -118,3 +118,5 @@ dist
 .eslintcache
 .eslintrc
 .eslintignore
+
+.DS_Store

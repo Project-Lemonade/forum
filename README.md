@@ -32,6 +32,8 @@
 - [Sequelize](https://sequelize.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 
+Given the loving name, STERN Stack.
+
 ### Starting Development
 
 #### Clone the repository
