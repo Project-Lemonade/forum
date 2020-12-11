@@ -23,7 +23,7 @@ export default function Home(props: AppProps) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const questions = await Questions.findAll({
     limit: 10,
     order: [["createdAt", "DESC"]],

@@ -65,7 +65,8 @@ export const dev = process.env.NODE_ENV !== "production";
             id: req.params.questionId,
           },
           attributes: ["id"],
-        }))
+        })) ||
+        !req.user
       )
         return res.redirect("/");
 

@@ -39,7 +39,7 @@ passport.use(
         } else {
           const newUser = await Users.create({
             id: profile.id,
-            avatar: profile.avatar,
+            avatar: `https://cdn.discordapp.com/avatars/${profile.id}/${profile.avatar}.png`,
             username: profile.username,
           });
 

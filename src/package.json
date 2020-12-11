@@ -1,7 +1,6 @@
 {
   "name": "src",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.ts",
@@ -10,7 +9,5 @@
   },
   "keywords": [],
   "author": "im-lonely <cursors.dev@gmail.com>",
-  "license": "MIT",
-  "dependencies": {},
-  "devDependencies": {}
+  "license": "MIT"
 }

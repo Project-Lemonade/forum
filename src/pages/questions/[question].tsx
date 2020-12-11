@@ -1,11 +1,11 @@
 import { GetServerSideProps } from "next";
-import absoluteUrl from "next-absolute-url";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import remark from "remark";
 import html from "remark-html";
 import __Date__ from "../../components/Date";
 import Layout from "../../components/Layout";
+import { Answers, Questions } from "../../database/database";
 import Answer from "./answer";
 
 type QuestionProps = {
@@ -21,6 +21,7 @@ export default function Question(props: QuestionProps) {
     (async () => {
       const parsedContent = await parse(props.data.question);
       setContent(parsedContent);
+      document.title = "Forums – " + data.title;
     })();
   }, []);
 
@@ -52,7 +53,7 @@ export default function Question(props: QuestionProps) {
           </div>
         </div>
         <section className="answers">
-          {data.answers.map((answer: any) => (
+          {JSON.parse(data.answers).map((answer: any) => (
             <Answer
               authorId={answer.authorId}
               text={answer.text}
@@ -85,15 +86,50 @@ export default function Question(props: QuestionProps) {
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { question: questionId } = ctx.query;
 
-  const { origin } = absoluteUrl(ctx.req);
+  const question = await Questions.findOne({
+    where: {
+      id: parseInt(Array.isArray(questionId) ? questionId[0] : questionId!),
+    },
+    attributes: [
+      "id",
+      "title",
+      "authorId",
+      "question",
+      "createdAt",
+      "updatedAt",
+    ],
+  });
 
-  const res = await fetch(`${origin}/api/question?id=${questionId}`);
-  const json = await res.json();
-  const { data } = await json;
+  if (!question) return { props: { data: null } };
+
+  const answers = await Answers.findAll({
+    where: {
+      questionId: parseInt(
+        Array.isArray(questionId) ? questionId[0] : questionId!
+      ),
+    },
+    order: [["createdAt", "DESC"]],
+    attributes: [
+      "id",
+      "questionId",
+      "authorId",
+      "text",
+      "createdAt",
+      "updatedAt",
+    ],
+  });
 
   return {
     props: {
-      data,
+      data: {
+        id: question.getDataValue("id"),
+        title: question.getDataValue("title"),
+        authorId: question.getDataValue("authorId"),
+        question: question.getDataValue("question"),
+        createdAt: question.getDataValue("createdAt").toJSON(),
+        updatedAt: question.getDataValue("updatedAt").toJSON(),
+        answers: JSON.stringify(answers),
+      },
     },
   };
 };

@@ -1,4 +1,5 @@
 .answer {
+  padding-bottom: 0.25rem;
   border-bottom: 1px solid var(--clr-grey);
 }
 
@@ -9,7 +10,7 @@
 .answer-info {
   display: flex;
   flex-direction: column;
-  height: 125px;
+  height: 110px;
 }
 
 .answer-timestamps {

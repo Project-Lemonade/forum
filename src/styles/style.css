@@ -55,6 +55,21 @@ a {
   text-decoration: none;
 }
 
+code {
+  font-family: var(--ff-mono);
+  font-size: smaller;
+  background-color: #eee;
+  padding: 0.25rem 0.35rem;
+  border-radius: 0.25rem;
+}
+
+em,
+i {
+  font-style: italic;
+  font-weight: lighter;
+  font-family: sans-serif;
+}
+
 .underline:hover {
   text-decoration: underline;
 }

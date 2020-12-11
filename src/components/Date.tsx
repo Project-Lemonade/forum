@@ -6,5 +6,11 @@ type DateProps = {
 };
 
 export default function __Date__(props: DateProps) {
-  return <span>{format(new Date(props.date), "MMMM dd, yyyy")}</span>;
+  return (
+    <span>
+      {Date.now() - new Date(props.date).valueOf() > 1000 * 60 * 60 * 24
+        ? new Date(props.date).toLocaleTimeString().toLowerCase()
+        : format(new Date(props.date), "MMMM dd, yyyy")}
+    </span>
+  );
 }
