@@ -35,7 +35,7 @@
 }
 
 .splash p {
-  font-size: var(--fs-body);
+  font-size: calc(var(--fs-body) + 0.25rem);
   font-family: var(--ff-secondary);
   margin: 0.5rem;
   opacity: 0;

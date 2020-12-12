@@ -18,6 +18,8 @@ export default function Question(props: QuestionProps) {
   if (!data) return <div></div>;
 
   const [content, setContent] = useState("");
+  const [answer, setAnswer] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     (async () => {
@@ -65,8 +67,37 @@ export default function Question(props: QuestionProps) {
             />
           ))}
         </section>
-        <form className="question-form" target="target">
-          <textarea className="question-textarea" spellCheck="false"></textarea>
+        <form
+          className="question-form"
+          target="target"
+          onSubmit={(e) => {
+            e.preventDefault();
+
+            if (answer.length < 32) {
+              return setError(
+                "Your answer must be at least 32 characters long!"
+              );
+            }
+
+            if (answer.length > 512) {
+              return setError(
+                "Your answer must be no longer than 512 characters!"
+              );
+            }
+          }}
+        >
+          <textarea
+            className="question-textarea"
+            autoCapitalize="off"
+            autoComplete="off"
+            autoCorrect="off"
+            value={answer}
+            onChange={(e) => {
+              setAnswer(e.target.value);
+              setError("");
+            }}
+          ></textarea>
+          <span className="error">{error}</span>
           <input
             type="submit"
             value="Post an answer"

@@ -25,25 +25,25 @@ export default function Ask() {
 
             if (title.length < 16) {
               return setMessage(
-                "The title must be more than 16 characters long!"
+                "The title must be at least 16 characters long!"
               );
             }
 
             if (title.length > 64) {
               return setMessage(
-                "The title must be less than 64 characters in length!"
+                "The title must be no more than 64 characters in length!"
               );
             }
 
             if (question.length < 64) {
               return setMessage(
-                "Your question should be longer than 64 characters!"
+                "Your question should be at least 64 characters!"
               );
             }
 
             if (question.length > 1024) {
               return setMessage(
-                "Sorry, your question has to be under 1024 characters!"
+                "Sorry, your question has to be at max 1024 characters!"
               );
             }
           }}
