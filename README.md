@@ -8,11 +8,16 @@
 
 ### To-do List
 
-- [ ] Welcome page
-- [ ] Ask page
+- [ ] Ask question
+- [ ] Edit question
+- [ ] Delete question
 - [ ] Post answer
+- [ ] Edit answer
+- [ ] Delete answer
 - [ ] Auth redirect
 - [ ] Session stores
+- [x] Welcome page
+- [x] Ask page
 - [x] Log out
 - [x] Serialization
 - [x] Deserialization
@@ -21,6 +26,12 @@
 - [x] Footer
 - [x] 404 Page
 - [x] Layout
+
+Frontend
+[##################################################] 100% complete
+
+Backend
+[#########################_________________________] 50% complete
 
 ### Technologies used:
 
