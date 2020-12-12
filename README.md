@@ -28,10 +28,12 @@
 - [x] Layout
 
 Frontend
-[##################################################] 100% complete
+
+![100%](https://progress-bar.dev/100/)
 
 Backend
-[#########################_________________________] 50% complete
+
+![50%](https://progress-bar.dev/50/)
 
 ### Technologies used:
 
