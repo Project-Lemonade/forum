@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import remark from "remark";
 import html from "remark-html";
-import __Date__ from "../../components/Date";
+import __Date__ from "./Date";
 
 type AnswerProps = {
   text: string;

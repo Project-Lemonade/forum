@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="max-width">
           <footer className="footer">
             <div className="footer-bottom">
-              <h4 className="footer-text gradient-text">Project Lemonade</h4>
+              <h1 className="footer-text gradient-text">Project Lemonade</h1>
               <div className="footer-join">
                 <a
                   href="https://discord.gg/5YZ7NSJ45e"
@@ -60,6 +60,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noreferrer"
                     href="https://discord.gg/z4seSr9yKZ"
+                    aria-label="discord"
                   >
                     <i className="fab fa-discord"></i>
                   </a>
@@ -70,6 +71,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noreferrer"
                     href="https://www.reddit.com/user/LemonadesMasterRace?utm_medium=android_app&utm_source=share"
+                    aria-label="reddit"
                   >
                     <i className="fab fa-reddit"></i>
                   </a>
@@ -80,6 +82,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noreferrer"
                     href="https://instagram.com/projektlemonade?igshid=1ufyxpsewegdw"
+                    aria-label="instagram"
                   >
                     <i className="fab fa-instagram"></i>
                   </a>

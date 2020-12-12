@@ -3,10 +3,10 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import remark from "remark";
 import html from "remark-html";
+import Answer from "../../components/Answer";
 import __Date__ from "../../components/Date";
 import Layout from "../../components/Layout";
 import { Answers, Questions } from "../../database/database";
-import Answer from "./answer";
 
 type QuestionProps = {
   data: any;
@@ -14,6 +14,8 @@ type QuestionProps = {
 
 export default function Question(props: QuestionProps) {
   const { data } = props;
+
+  if (!data) return <div></div>;
 
   const [content, setContent] = useState("");
 

@@ -16,7 +16,7 @@
   transition: 1s transform ease, 1s opacity ease;
 }
 
-.splash h3 {
+.splash h2 {
   font-size: var(--fs-h1);
   font-family: var(--ff-mono);
   font-weight: 300;

@@ -12,7 +12,7 @@ export default function Welcome() {
       <div className="splash">
         <div>
           <h1>Project Lemonade</h1>
-          <h3>Forums</h3>
+          <h2>Forums</h2>
           <hr />
           <p>Post a question, receive an answer.</p>
         </div>

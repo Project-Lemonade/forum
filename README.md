@@ -47,6 +47,10 @@ Backend
 
 Given the loving name, STERN Stack.
 
+### Current Lighthouse score
+
+![Lighthouse score](./score.png)
+
 ### Starting Development
 
 #### Clone the repository
