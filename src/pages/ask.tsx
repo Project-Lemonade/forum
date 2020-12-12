@@ -19,7 +19,7 @@ export default function Ask() {
         </p>
         <form
           action="/"
-          method="put"
+          method="POST"
           onSubmit={(e) => {
             e.preventDefault();
 
