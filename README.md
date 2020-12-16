@@ -14,8 +14,9 @@
 - [ ] Post answer
 - [ ] Edit answer
 - [ ] Delete answer
-- [ ] Auth redirect
 - [ ] Session stores
+- [x] Authentication
+- [x] Auth redirect
 - [x] Welcome page
 - [x] Ask page
 - [x] Log out
@@ -33,7 +34,7 @@ Frontend
 
 Backend
 
-![50%](https://progress-bar.dev/50/)
+![75%](https://progress-bar.dev/50/)
 
 ### Technologies used:
 

@@ -2,10 +2,13 @@ import Link from "next/link";
 import React from "react";
 
 interface HeaderProps {
-  isLoggedIn?: boolean;
+  isLoggedIn: boolean;
+  user: any;
 }
 
 export default function Header(props: HeaderProps) {
+  const { user } = props;
+
   return (
     <header className="header">
       <Link href="/">
@@ -17,10 +20,14 @@ export default function Header(props: HeaderProps) {
       <div className="info">
         {props.isLoggedIn ? (
           <div className="profile">
-            <a href="_____" className="underline">
-              Log out
-            </a>
-            <img src="" alt="user avatar" className="pfp" />
+            <div className="underline">
+              <Link href="/auth/logout">Log out</Link>
+            </div>
+            <img
+              src={JSON.parse(user).avatar}
+              alt="user avatar"
+              className="pfp"
+            />
           </div>
         ) : (
           <div className="log-in underline">

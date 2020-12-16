@@ -19,10 +19,7 @@ router.get(
   "/redirect",
   passport.authenticate("discord", {
     failureRedirect: "/forbidden",
-  }),
-  (req, res) => {
-    res.send(req.user);
-  }
+  })
 );
 
 router.get("*", (req, res) => {

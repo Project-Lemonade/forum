@@ -3,11 +3,12 @@ import React from "react";
 import Layout from "../components/Layout";
 import QuestionsDisplay from "../components/QuestionsDisplay";
 import Welcome from "../components/Welcome";
-import { Questions } from "../database/database";
+import { Questions, Users } from "../database/database";
 
 type AppProps = {
   data: any;
   isLoggedIn: boolean;
+  user: any;
 };
 
 export default function Home(props: AppProps) {
@@ -15,7 +16,7 @@ export default function Home(props: AppProps) {
   const { isLoggedIn } = props;
 
   return (
-    <Layout>
+    <Layout isLoggedIn={isLoggedIn} user={props.user || null}>
       <section className="home">
         {isLoggedIn ? <QuestionsDisplay questions={questions} /> : <Welcome />}
       </section>
@@ -32,8 +33,23 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   return {
     props: {
-      data: JSON.stringify(questions),
-      isLoggedIn: false,
+      data: JSON.stringify(
+        await Promise.all(
+          JSON.parse(JSON.stringify(questions)).map(async (q: any) => {
+            q.author = await Users.findOne({
+              where: {
+                id: q.authorId,
+              },
+            });
+
+            return q;
+          })
+        )
+      ),
+      //@ts-ignore
+      isLoggedIn: !!ctx.req.user,
+      //@ts-ignore
+      user: JSON.stringify(ctx.req.user || ""),
     },
   };
 };

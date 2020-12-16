@@ -1,9 +1,11 @@
 import Head from "next/head";
-import React, { useState } from "react";
+import React from "react";
 import Footer from "./Footer";
 import Header from "./Header";
 
 type LayoutProps = {
+  user: any;
+  isLoggedIn: boolean;
   children: any;
 };
 
@@ -33,7 +35,7 @@ export default function Layout(props: LayoutProps) {
         ></script>
       </Head>
       <div className="App">
-        <Header />
+        <Header isLoggedIn={props.isLoggedIn} user={props.user} />
         <div className="content">{props.children}</div>
         <Footer />
       </div>

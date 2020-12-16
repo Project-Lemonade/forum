@@ -7,7 +7,8 @@ type AnswerProps = {
   text: string;
   createdAt: string;
   updatedAt: string;
-  authorId: string;
+  author: string;
+  avatar: string;
 };
 
 export default function Answer(props: AnswerProps) {
@@ -40,8 +41,8 @@ export default function Answer(props: AnswerProps) {
           </p>
         </div>
         <div className="answer-author">
-          <p className="answer-username">{props.authorId}</p>
-          <img src="/images/profile.png" alt="" className="answer-pfp" />
+          <p className="answer-username">{props.author}</p>
+          <img src={props.avatar} alt="" className="answer-pfp" />
         </div>
       </div>
     </div>

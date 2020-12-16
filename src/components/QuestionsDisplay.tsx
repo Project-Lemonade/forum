@@ -20,15 +20,15 @@ export default function QuestionsDisplay(props: QuestionsDisplayProps) {
       <hr />
       <div className="recent-questions">
         {questions.map((q: any) => {
-          const { id, authorId, createdAt, updatedAt, title } = q;
+          const { id, author, createdAt, title } = q;
 
           return (
             <QuestionPreview
               id={id}
               title={title}
-              author={authorId}
+              author={author.username}
+              avatar={author.avatar}
               createdAt={createdAt}
-              updatedAt={updatedAt}
               key={id}
             />
           );

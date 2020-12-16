@@ -4,14 +4,14 @@ import __Date__ from "./Date";
 
 type QuestionPreviewProps = {
   author: string;
+  avatar: string;
   createdAt: string;
-  updatedAt: string;
   title: string;
   id: number;
 };
 
 export default function QuestionPreview(props: QuestionPreviewProps) {
-  const { id, author, createdAt, title } = props;
+  const { id, author, createdAt, title, avatar } = props;
 
   return (
     <Link href={`/questions/${id}`}>
@@ -28,7 +28,7 @@ export default function QuestionPreview(props: QuestionPreviewProps) {
           <div className="answer-author">
             <span className="preview-author">Asked by</span>
             <p className="answer-username">{author}</p>
-            <img src="/images/profile.png" alt="" className="answer-pfp" />
+            <img src={avatar} alt="" className="answer-pfp" />
           </div>
         </div>
       </div>

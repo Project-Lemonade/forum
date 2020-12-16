@@ -28,7 +28,7 @@ try {
     await sequelize.sync({ force });
 
     await Questions.upsert({
-      authorId: "123456789123456789",
+      authorId: "508442553754845184",
       title: "my first question",
       question: "**markdown** is *supported*",
     });

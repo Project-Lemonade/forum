@@ -6,14 +6,18 @@ import html from "remark-html";
 import Answer from "../../components/Answer";
 import __Date__ from "../../components/Date";
 import Layout from "../../components/Layout";
-import { Answers, Questions } from "../../database/database";
+import { Answers, Questions, Users } from "../../database/database";
 
 type QuestionProps = {
   data: any;
+  isLoggedIn: boolean;
+  user: any;
 };
 
 export default function Question(props: QuestionProps) {
-  const { data } = props;
+  const { data, isLoggedIn, user } = props;
+
+  const author = JSON.parse(data.author);
 
   if (!data) return <div></div>;
 
@@ -30,7 +34,7 @@ export default function Question(props: QuestionProps) {
   }, []);
 
   return (
-    <Layout>
+    <Layout isLoggedIn={isLoggedIn} user={user}>
       <article className="question">
         <div className="question-part">
           <h1 className="question-title">{data.title}</h1>
@@ -52,14 +56,15 @@ export default function Question(props: QuestionProps) {
             dangerouslySetInnerHTML={{ __html: content }}
           ></div>
           <div className="answer-author">
-            <p className="answer-username">{data.authorId}</p>
-            <img src="/images/profile.png" alt="" className="answer-pfp" />
+            <p className="answer-username">{author.username}</p>
+            <img src={author.avatar} alt="" className="answer-pfp" />
           </div>
         </div>
         <section className="answers">
           {JSON.parse(data.answers).map((answer: any) => (
             <Answer
-              authorId={answer.authorId}
+              author={answer.author.username}
+              avatar={answer.author.avatar}
               text={answer.text}
               createdAt={answer.createdAt}
               updatedAt={answer.updatedAt}
@@ -123,17 +128,21 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     where: {
       id: parseInt(Array.isArray(questionId) ? questionId[0] : questionId!),
     },
-    attributes: [
-      "id",
-      "title",
-      "authorId",
-      "question",
-      "createdAt",
-      "updatedAt",
-    ],
+    attributes: ["title", "authorId", "question", "createdAt", "updatedAt"],
   });
 
   if (!question) return { props: { data: null } };
+
+  const questionAuthor = await Users.findOne({
+    where: {
+      //@ts-ignore
+      id: question.authorId,
+    },
+    attributes: ["username", "avatar"],
+  });
+
+  //@ts-ignore
+  question.questionAuthor = questionAuthor;
 
   const answers = await Answers.findAll({
     where: {
@@ -142,27 +151,36 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       ),
     },
     order: [["createdAt", "DESC"]],
-    attributes: [
-      "id",
-      "questionId",
-      "authorId",
-      "text",
-      "createdAt",
-      "updatedAt",
-    ],
+    attributes: ["authorId", "text", "createdAt", "updatedAt"],
+  });
+
+  answers.forEach(async (a) => {
+    const author = await Users.findOne({
+      where: {
+        //@ts-ignore
+        id: a.authorId,
+      },
+      attributes: ["username", "avatar"],
+    });
+    //@ts-ignore
+    a.author = author;
   });
 
   return {
     props: {
       data: {
-        id: question.getDataValue("id"),
         title: question.getDataValue("title"),
-        authorId: question.getDataValue("authorId"),
+        //@ts-ignore
+        author: JSON.stringify(question.questionAuthor),
         question: question.getDataValue("question"),
         createdAt: question.getDataValue("createdAt").toJSON(),
         updatedAt: question.getDataValue("updatedAt").toJSON(),
         answers: JSON.stringify(answers),
       },
+      //@ts-ignore
+      isLoggedIn: !!ctx.req.user,
+      //@ts-ignore
+      user: JSON.stringify(ctx.req.user || ""),
     },
   };
 };

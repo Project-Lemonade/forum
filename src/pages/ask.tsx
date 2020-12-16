@@ -1,14 +1,24 @@
-import React, { useRef, useState } from "react";
+import { GetServerSideProps } from "next";
+import React, { useEffect, useRef, useState } from "react";
 import Layout from "../components/Layout";
 
-export default function Ask() {
+type AskProps = {
+  isLoggedIn: boolean;
+  user: any;
+};
+
+export default function Ask(props: AskProps) {
   const [title, setTitle] = useState("");
   const [question, setQuestion] = useState("");
   const [message, setMessage] = useState("");
   const error = useRef<HTMLSpanElement>(null);
 
+  useEffect(() => {
+    document.title = "Forums – Ask";
+  }, []);
+
   return (
-    <Layout>
+    <Layout isLoggedIn={props.isLoggedIn} user={props.user}>
       <div className="ask">
         <h1 className="gradient-text">Ask the community!</h1>
         <p className="ask-desc">
@@ -88,3 +98,14 @@ export default function Ask() {
     </Layout>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  return {
+    props: {
+      //@ts-ignore
+      isLoggedIn: !!ctx.req.user,
+      //@ts-ignore
+      user: JSON.stringify(ctx.req.user || ""),
+    },
+  };
+};
