@@ -50,7 +50,25 @@ Given the loving name, STERN Stack.
 
 ### Current Lighthouse score
 
-![Lighthouse score](./score.png)
+#### Desktop
+
+| Field          | Rating |
+| -------------- | ------ |
+| Performance    | 98%    |
+| Accessibility  | 96%    |
+| Best Practices | 93%    |
+| SEO            | 100%   |
+| PWA            | N / A  |
+
+#### Mobile
+
+| Field          | Rating |
+| -------------- | ------ |
+| Performance    | 74%    |
+| Accessibility  | 96%    |
+| Best Practices | 93%    |
+| SEO            | 100%   |
+| PWA            | N / A  |
 
 ### Starting Development
 

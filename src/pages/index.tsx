@@ -8,7 +8,6 @@ import { Questions, Users } from "../database/database";
 type AppProps = {
   data: any;
   isLoggedIn: boolean;
-  user: any;
 };
 
 export default function Home(props: AppProps) {
@@ -16,7 +15,7 @@ export default function Home(props: AppProps) {
   const { isLoggedIn } = props;
 
   return (
-    <Layout isLoggedIn={isLoggedIn} user={props.user || null}>
+    <Layout>
       <section className="home">
         {isLoggedIn ? <QuestionsDisplay questions={questions} /> : <Welcome />}
       </section>
@@ -48,8 +47,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       ),
       //@ts-ignore
       isLoggedIn: !!ctx.req.user,
-      //@ts-ignore
-      user: JSON.stringify(ctx.req.user || ""),
     },
   };
 };

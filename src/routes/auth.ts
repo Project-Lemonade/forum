@@ -11,14 +11,10 @@ router.get("/logout", (req, res) => {
   res.redirect("/");
 });
 
-router.get("/forbidden", (req, res) => {
-  res.redirect("/");
-});
-
 router.get(
   "/redirect",
   passport.authenticate("discord", {
-    failureRedirect: "/forbidden",
+    failureRedirect: "/",
   })
 );
 
