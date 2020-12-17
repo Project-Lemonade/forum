@@ -27,12 +27,6 @@ try {
 
     await sequelize.sync({ force });
 
-    await Questions.upsert({
-      authorId: "508442553754845184",
-      title: "my first question",
-      question: "**markdown** is *supported*",
-    });
-
     console.log("Database synced");
     sequelize.close();
   })();

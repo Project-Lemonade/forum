@@ -10,10 +10,12 @@ import { Answers, Questions, Users } from "../../database/database";
 
 type QuestionProps = {
   data: any;
+  isLoggedIn: boolean;
+  user: any;
 };
 
 export default function Question(props: QuestionProps) {
-  const { data } = props;
+  const { data, isLoggedIn, user } = props;
 
   const author = JSON.parse(data.author);
 
@@ -32,7 +34,7 @@ export default function Question(props: QuestionProps) {
   }, []);
 
   return (
-    <Layout>
+    <Layout isLoggedIn={isLoggedIn} user={user}>
       <article className="question">
         <div className="question-part">
           <h1 className="question-title">{data.title}</h1>
@@ -175,6 +177,10 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
         updatedAt: question.getDataValue("updatedAt").toJSON(),
         answers: JSON.stringify(answers),
       },
+      //@ts-ignore
+      isLoggedIn: !!ctx.req.user,
+      //@ts-ignore
+      user: JSON.stringify(ctx.req.user),
     },
   };
 };
