@@ -34,7 +34,7 @@ Frontend
 
 Backend
 
-![75%](https://progress-bar.dev/50/)
+![75%](https://progress-bar.dev/75/)
 
 ### Technologies used:
 
